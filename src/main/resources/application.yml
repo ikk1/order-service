@@ -8,22 +8,10 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092
 
+o2c:
+  kafka:
+    topics:
+      order-events: ${O2C_ORDER_EVENTS_TOPIC:o2c.order.v1}
+
 order:
   supported-currencies: BRL,USD,EUR
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics,prometheus
-  metrics:
-    tags:
-      application: ${spring.application.name}
-
-logging:
-  pattern:
-    level: "%5p [cid=%X{correlationId}]"
-  level:
-    org.springframework.kafka: DEBUG
-    org.apache.kafka: DEBUG
-
